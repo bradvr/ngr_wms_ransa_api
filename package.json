@@ -1,0 +1,65 @@
+{
+  "name": "ngr_wms_ransa_api",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4",
+    "@sap/cds": "^9",
+    "@sap/xsenv": "^6.1.0",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "features": {
+      "odata_new_parser": false,
+      "skip_unused": true,
+    "assert_integrity": false
+    },
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa"
+      },
+      "[development]": {
+        "auth": "dummy"
+      },
+      "ZFI_RANSA_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZFI_RANSA_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "[production]": {
+          "credentials": {
+            "destination": "s4h_backend_system",
+            "path": "/sap/opu/odata/sap/ZFI_RANSA_SRV"
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "s4h_backend_system",
+            "path": "/sap/opu/odata/sap/ZFI_RANSA_SRV",
+            "authentication": "BasicAuthentication",
+            "username": "lrosales",
+            "password": "Inicio$113"
+          }
+        }
+      },
+      "bpa_destination": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "sap_process_automation"
+        }
+      },
+      "application-logging": true
+    }
+  }
+}

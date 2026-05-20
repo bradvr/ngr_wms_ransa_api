@@ -1,0 +1,251 @@
+<edmx:Edmx
+	xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+	xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema
+			xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZFI_RANSA_SRV" xml:lang="es" sap:schema-version="1">
+			<EntityType Name="ExpeditionHeader" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Externorderkey"/>
+				</Key>
+				<Property Name="Externorderkey" Type="Edm.String" Nullable="false" sap:label="EXTERNORDERKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Referencedoc" Type="Edm.String" Nullable="false" sap:label="REFERENCEDOC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="Detail" Relationship="ZFI_RANSA_SRV.ExpeditionHeaderToExpeditionDetail" FromRole="FromRole_ExpeditionHeaderToExpeditionDetail" ToRole="ToRole_ExpeditionHeaderToExpeditionDetail"/>
+				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.ExpeditionHeaderToReturn" FromRole="FromRole_ExpeditionHeaderToReturn" ToRole="ToRole_ExpeditionHeaderToReturn"/>
+			</EntityType>
+			<EntityType Name="ExpeditionDetail" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Externorderkey"/>
+					<PropertyRef Name="Sku"/>
+				</Key>
+				<Property Name="Externorderkey" Type="Edm.String" Nullable="false" sap:label="EXTERNORDERKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Lote" Type="Edm.String" Nullable="false" sap:label="LOTE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Externlinenro" Type="Edm.String" Nullable="false" sap:label="EXTERNLINENRO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Qty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Sku" Type="Edm.String" Nullable="false" sap:label="SKU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="FullfillQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+			</EntityType>
+			<EntityType Name="ConfirmationRef" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Guia"/>
+				</Key>
+				<Property Name="Guia" Type="Edm.String" Nullable="false" sap:label="GUIA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="Detail" Relationship="ZFI_RANSA_SRV.ConfirmationRefToConfirmationRefDet" FromRole="FromRole_ConfirmationRefToConfirmationRefDet" ToRole="ToRole_ConfirmationRefToConfirmationRefDet"/>
+				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.ConfirmationRefToReturn" FromRole="FromRole_ConfirmationRefToReturn" ToRole="ToRole_ConfirmationRefToReturn"/>
+			</EntityType>
+			<EntityType Name="ConfirmationRefDet" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Guia"/>
+				</Key>
+				<Property Name="Guia" Type="Edm.String" Nullable="false" sap:label="GUIA" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Pedido" Type="Edm.String" Nullable="false" sap:label="PEDIDO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="Hold" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Sku"/>
+				</Key>
+				<Property Name="Storerkey" Type="Edm.String" Nullable="false" sap:label="STORERKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Description2" Type="Edm.String" Nullable="false" sap:label="DESCRIPTION2" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Whseid" Type="Edm.String" Nullable="false" sap:label="WHSEID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Sku" Type="Edm.String" Nullable="false" MaxLength="18" sap:label="Material" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Lottable02" Type="Edm.String" Nullable="false" sap:label="LOTTABLE02" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Lottable05" Type="Edm.String" Nullable="false" sap:label="LOTTABLE05" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Lottable06" Type="Edm.String" Nullable="false" sap:label="LOTTABLE06" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Lottable07" Type="Edm.String" Nullable="false" sap:label="LOTTABLE07" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Lottable08" Type="Edm.String" Nullable="false" sap:label="LOTTABLE08" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Lottable09" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Lote" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="HoldCode" Type="Edm.String" Nullable="false" sap:label="HOLD_CODE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="HoldQty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="HoldAdddate" Type="Edm.String" Nullable="false" sap:label="HOLD_ADDDATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="HoldAddwho" Type="Edm.String" Nullable="false" sap:label="HOLD_ADDWHO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.HoldToReturn" FromRole="FromRole_HoldToReturn" ToRole="ToRole_HoldToReturn"/>
+			</EntityType>
+			<EntityType Name="AsnHeader" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Receiptkey"/>
+				</Key>
+				<Property Name="Susr1" Type="Edm.String" Nullable="false" sap:label="SUSR1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Receiptkey" Type="Edm.String" Nullable="false" sap:label="RECEIPTKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Adddate" Type="Edm.String" sap:label="ADDDATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="Detail" Relationship="ZFI_RANSA_SRV.AsnHeaderToAsnDetail" FromRole="FromRole_AsnHeaderToAsnDetail" ToRole="ToRole_AsnHeaderToAsnDetail"/>
+				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.AsnHeaderToReturn" FromRole="FromRole_AsnHeaderToReturn" ToRole="ToRole_AsnHeaderToReturn"/>
+			</EntityType>
+			<EntityType Name="AsnDetail" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Receiptkey"/>
+					<PropertyRef Name="Sku"/>
+				</Key>
+				<Property Name="Qtyexpected" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Importe ML" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Qtyreceived" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Expirydate" Type="Edm.String" Nullable="false" sap:label="EXPIRYDATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Receiptkey" Type="Edm.String" Nullable="false" sap:label="RECEIPTKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="Tolot" Type="Edm.String" Nullable="false" sap:label="TOLOT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Sku" Type="Edm.String" Nullable="false" sap:label="SKU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Podocument" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Doc.compras" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Storekey" Type="Edm.String" sap:label="STOREKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Poline" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Posición" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Almacen" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Almacén" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="Return" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Type"/>
+					<PropertyRef Name="Id"/>
+					<PropertyRef Name="Number"/>
+				</Key>
+				<Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Tipo de mensaje" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Clase de mensajes" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Number" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Nº mensaje" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="220" sap:label="Texto mensaje" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+			</EntityType>
+			<EntityType Name="AdjustHeader" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Adjustmentkey"/>
+				</Key>
+				<Property Name="Adjustmentkey" Type="Edm.String" Nullable="false" sap:label="ADJUSTMENTKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Lottable09" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Lote" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Sku" Type="Edm.String" Nullable="false" sap:label="SKU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Propietario" Type="Edm.String" Nullable="false" sap:label="PROPIETARIO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Qty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Storerkey" Type="Edm.String" Nullable="false" sap:label="STORERKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="Transactionid" Type="Edm.String" Nullable="false" sap:label="TRANSACTIONID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<NavigationProperty Name="Detail" Relationship="ZFI_RANSA_SRV.AdjustHeaderToAdjustDetail" FromRole="FromRole_AdjustHeaderToAdjustDetail" ToRole="ToRole_AdjustHeaderToAdjustDetail"/>
+				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.AdjustHeaderToReturn" FromRole="FromRole_AdjustHeaderToReturn" ToRole="ToRole_AdjustHeaderToReturn"/>
+			</EntityType>
+			<EntityType Name="AdjustDetail" sap:content-version="1">
+				<Key>
+					<PropertyRef Name="Adjustmentkey"/>
+					<PropertyRef Name="Sku"/>
+				</Key>
+				<Property Name="Adjustmentkey" Type="Edm.String" Nullable="false" sap:label="ADJUSTMENTKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Qty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Sku" Type="Edm.String" Nullable="false" sap:label="SKU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+			</EntityType>
+			<Association Name="AdjustHeaderToReturn" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.AdjustHeader" Multiplicity="1" Role="FromRole_AdjustHeaderToReturn"/>
+				<End Type="ZFI_RANSA_SRV.Return" Multiplicity="*" Role="ToRole_AdjustHeaderToReturn"/>
+			</Association>
+			<Association Name="AdjustHeaderToAdjustDetail" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.AdjustHeader" Multiplicity="1" Role="FromRole_AdjustHeaderToAdjustDetail"/>
+				<End Type="ZFI_RANSA_SRV.AdjustDetail" Multiplicity="*" Role="ToRole_AdjustHeaderToAdjustDetail"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_AdjustHeaderToAdjustDetail">
+						<PropertyRef Name="Adjustmentkey"/>
+					</Principal>
+					<Dependent Role="ToRole_AdjustHeaderToAdjustDetail">
+						<PropertyRef Name="Adjustmentkey"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ExpeditionHeaderToReturn" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.ExpeditionHeader" Multiplicity="1" Role="FromRole_ExpeditionHeaderToReturn"/>
+				<End Type="ZFI_RANSA_SRV.Return" Multiplicity="*" Role="ToRole_ExpeditionHeaderToReturn"/>
+			</Association>
+			<Association Name="ExpeditionHeaderToExpeditionDetail" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.ExpeditionHeader" Multiplicity="1" Role="FromRole_ExpeditionHeaderToExpeditionDetail"/>
+				<End Type="ZFI_RANSA_SRV.ExpeditionDetail" Multiplicity="*" Role="ToRole_ExpeditionHeaderToExpeditionDetail"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ExpeditionHeaderToExpeditionDetail">
+						<PropertyRef Name="Externorderkey"/>
+					</Principal>
+					<Dependent Role="ToRole_ExpeditionHeaderToExpeditionDetail">
+						<PropertyRef Name="Externorderkey"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="AsnHeaderToAsnDetail" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.AsnHeader" Multiplicity="1" Role="FromRole_AsnHeaderToAsnDetail"/>
+				<End Type="ZFI_RANSA_SRV.AsnDetail" Multiplicity="*" Role="ToRole_AsnHeaderToAsnDetail"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_AsnHeaderToAsnDetail">
+						<PropertyRef Name="Receiptkey"/>
+					</Principal>
+					<Dependent Role="ToRole_AsnHeaderToAsnDetail">
+						<PropertyRef Name="Receiptkey"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="AsnHeaderToReturn" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.AsnHeader" Multiplicity="1" Role="FromRole_AsnHeaderToReturn"/>
+				<End Type="ZFI_RANSA_SRV.Return" Multiplicity="*" Role="ToRole_AsnHeaderToReturn"/>
+			</Association>
+			<Association Name="HoldToReturn" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.Hold" Multiplicity="1" Role="FromRole_HoldToReturn"/>
+				<End Type="ZFI_RANSA_SRV.Return" Multiplicity="*" Role="ToRole_HoldToReturn"/>
+			</Association>
+			<Association Name="ConfirmationRefToConfirmationRefDet" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.ConfirmationRef" Multiplicity="1" Role="FromRole_ConfirmationRefToConfirmationRefDet"/>
+				<End Type="ZFI_RANSA_SRV.ConfirmationRefDet" Multiplicity="*" Role="ToRole_ConfirmationRefToConfirmationRefDet"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_ConfirmationRefToConfirmationRefDet">
+						<PropertyRef Name="Guia"/>
+					</Principal>
+					<Dependent Role="ToRole_ConfirmationRefToConfirmationRefDet">
+						<PropertyRef Name="Guia"/>
+					</Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="ConfirmationRefToReturn" sap:content-version="1">
+				<End Type="ZFI_RANSA_SRV.ConfirmationRef" Multiplicity="1" Role="FromRole_ConfirmationRefToReturn"/>
+				<End Type="ZFI_RANSA_SRV.Return" Multiplicity="*" Role="ToRole_ConfirmationRefToReturn"/>
+			</Association>
+			<EntityContainer Name="ZFI_RANSA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+				<EntitySet Name="ExpeditionHeaderSet" EntityType="ZFI_RANSA_SRV.ExpeditionHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="ExpeditionDetailSet" EntityType="ZFI_RANSA_SRV.ExpeditionDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="ConfirmationRefSet" EntityType="ZFI_RANSA_SRV.ConfirmationRef" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="ConfirmationRefDetSet" EntityType="ZFI_RANSA_SRV.ConfirmationRefDet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="HoldSet" EntityType="ZFI_RANSA_SRV.Hold" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="AsnHeaderSet" EntityType="ZFI_RANSA_SRV.AsnHeader" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="AsnDetailSet" EntityType="ZFI_RANSA_SRV.AsnDetail" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="ReturnSet" EntityType="ZFI_RANSA_SRV.Return" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="AdjustHeaderSet" EntityType="ZFI_RANSA_SRV.AdjustHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<EntitySet Name="AdjustDetailSet" EntityType="ZFI_RANSA_SRV.AdjustDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+				<AssociationSet Name="AsnHeaderToReturnSet" Association="ZFI_RANSA_SRV.AsnHeaderToReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="AsnHeaderSet" Role="FromRole_AsnHeaderToReturn"/>
+					<End EntitySet="ReturnSet" Role="ToRole_AsnHeaderToReturn"/>
+				</AssociationSet>
+				<AssociationSet Name="ExpeditionHeaderToReturnSet" Association="ZFI_RANSA_SRV.ExpeditionHeaderToReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="ExpeditionHeaderSet" Role="FromRole_ExpeditionHeaderToReturn"/>
+					<End EntitySet="ReturnSet" Role="ToRole_ExpeditionHeaderToReturn"/>
+				</AssociationSet>
+				<AssociationSet Name="ConfirmationRefToConfirmationRefDetSet" Association="ZFI_RANSA_SRV.ConfirmationRefToConfirmationRefDet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="ConfirmationRefSet" Role="FromRole_ConfirmationRefToConfirmationRefDet"/>
+					<End EntitySet="ConfirmationRefDetSet" Role="ToRole_ConfirmationRefToConfirmationRefDet"/>
+				</AssociationSet>
+				<AssociationSet Name="AdjustHeaderToAdjustDetailSet" Association="ZFI_RANSA_SRV.AdjustHeaderToAdjustDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="AdjustHeaderSet" Role="FromRole_AdjustHeaderToAdjustDetail"/>
+					<End EntitySet="AdjustDetailSet" Role="ToRole_AdjustHeaderToAdjustDetail"/>
+				</AssociationSet>
+				<AssociationSet Name="ConfirmationRefToReturnSet" Association="ZFI_RANSA_SRV.ConfirmationRefToReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="ConfirmationRefSet" Role="FromRole_ConfirmationRefToReturn"/>
+					<End EntitySet="ReturnSet" Role="ToRole_ConfirmationRefToReturn"/>
+				</AssociationSet>
+				<AssociationSet Name="ExpeditionHeaderToExpeditionDetailSet" Association="ZFI_RANSA_SRV.ExpeditionHeaderToExpeditionDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="ExpeditionHeaderSet" Role="FromRole_ExpeditionHeaderToExpeditionDetail"/>
+					<End EntitySet="ExpeditionDetailSet" Role="ToRole_ExpeditionHeaderToExpeditionDetail"/>
+				</AssociationSet>
+				<AssociationSet Name="HoldToReturnSet" Association="ZFI_RANSA_SRV.HoldToReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="HoldSet" Role="FromRole_HoldToReturn"/>
+					<End EntitySet="ReturnSet" Role="ToRole_HoldToReturn"/>
+				</AssociationSet>
+				<AssociationSet Name="AsnHeaderToAsnDetailSet" Association="ZFI_RANSA_SRV.AsnHeaderToAsnDetail" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="AsnHeaderSet" Role="FromRole_AsnHeaderToAsnDetail"/>
+					<End EntitySet="AsnDetailSet" Role="ToRole_AsnHeaderToAsnDetail"/>
+				</AssociationSet>
+				<AssociationSet Name="AdjustHeaderToReturnSet" Association="ZFI_RANSA_SRV.AdjustHeaderToReturn" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+					<End EntitySet="AdjustHeaderSet" Role="FromRole_AdjustHeaderToReturn"/>
+					<End EntitySet="ReturnSet" Role="ToRole_AdjustHeaderToReturn"/>
+				</AssociationSet>
+			</EntityContainer>
+			<atom:link
+				xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://ngrlmerpappdv.bembos.net:8002/sap/opu/odata/sap/ZFI_RANSA_SRV/$metadata"/>
+				<atom:link
+					xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://ngrlmerpappdv.bembos.net:8002/sap/opu/odata/sap/ZFI_RANSA_SRV/$metadata"/>
+				</Schema>
+			</edmx:DataServices>
+		</edmx:Edmx>

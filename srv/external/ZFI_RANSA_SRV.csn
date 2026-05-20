@@ -1,0 +1,92 @@
+{
+ "meta": {
+  "creator": "cds-dk 9.6.1"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "ZFI_RANSA_SRV": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true",
+   "@sap.supported.formats": "atom json xlsx"
+  },
+  "ZFI_RANSA_SRV.AsnHeaderSet": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.pageable": "false",
+   "@sap.addressable": "false",
+   "@sap.content.version": "1",
+   "elements": {
+    "Receiptkey": {
+     "key": true,
+     "type": "cds.String",
+     "@sap.label": "RECEIPTKEY",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "Adddate": {
+     "type": "cds.String",
+     "@sap.label": "ADDDATE",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    },
+    "Detail": {
+     "type": "cds.Association",
+     "target": "ZFI_RANSA_SRV.AsnDetailSet",
+     "cardinality": {
+      "max": "*"
+     },
+     "keys": []
+    }
+   }
+  },
+  "ZFI_RANSA_SRV.AsnDetailSet": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.updatable": "false",
+   "@sap.deletable": "false",
+   "@sap.pageable": "false",
+   "@sap.addressable": "false",
+   "@sap.content.version": "1",
+   "elements": {
+    "Receiptkey": {
+     "key": true,
+     "type": "cds.String",
+     "@sap.label": "RECEIPTKEY",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "Sku": {
+     "key": true,
+     "type": "cds.String",
+     "@sap.label": "SKU",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false",
+     "notNull": true
+    },
+    "Storekey": {
+     "type": "cds.String",
+     "@sap.label": "STOREKEY",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false",
+     "@sap.sortable": "false",
+     "@sap.filterable": "false"
+    }
+   }
+  }
+ }
+}

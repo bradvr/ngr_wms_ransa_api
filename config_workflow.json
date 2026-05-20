@@ -1,0 +1,28 @@
+{
+    "authorities": [
+        "ProcessAutomationAdmin",
+        "WORKFLOW_DEFINITION_GET_MODEL",
+        "WORKFLOW_INSTANCES_UPDATE",
+        "TASK_COMPLETE",
+        "TASK_UPDATE",
+        "ProcessAutomationParticipant",
+        "ngr_ransa",
+        "WorkflowParticipant",
+        "WorkflowInitiator",
+        "WorkflowContextAdmin"
+    ],
+    "scope": [
+        "ProcessAutomationAdmin",
+        "WORKFLOW_DEFINITION_GET_MODEL",
+        "WORKFLOW_INSTANCES_UPDATE",
+        "TASK_COMPLETE",
+        "TASK_UPDATE",
+        "ProcessAutomationParticipant",
+        "ngr_ransa",
+        "WorkflowParticipant",
+        "WorkflowInitiator",
+        "WorkflowContextAdmin"
+    ],
+    "dataVisibility": "shared",
+    "defaultCollectionQueryFilter": "shared"
+}

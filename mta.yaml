@@ -1,0 +1,79 @@
+_schema-version: 3.3.0
+ID: ngr_wms_ransa_api
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  - name: ngr_wms_ransa_api-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      instances: 1
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: ngr_wms_ransa_api-auth
+      - name: ngr_wms_ransa_api-dest
+      - name: ngr_wms_ransa_api-conn
+      - name: ngr_wms_ransa_api-logging
+      - name: ngr_wms_ransa_api-bpa
+#        parameters:
+#          content-target: true
+#          service-key:
+#            config:
+#              deployUsageScenario: workflow
+#            name: spa-workflow-service-key 
+
+resources:
+  - name: ngr_wms_ransa_api-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      service-keys:
+        - name: ngr_wms_ransa_api-key
+          config:
+            # optional: specify permissions or other service-specific parameters
+            permissions: read-write 
+      config:
+        xsappname: ngr_wms_ransa_api
+        tenant-mode: dedicated
+  - name: ngr_wms_ransa_api-dest
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+  # Connectivity Service
+  - name: ngr_wms_ransa_api-conn
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: connectivity
+      service-plan: lite
+  - name: ngr_wms_ransa_api-bpa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: standard
+      service: process-automation-service
+      service-keys:
+        - name: spa-workflow-service-key 
+          config:
+              deployUsageScenario: workflow
+    includes:
+      - name: config 
+        path: ./config_workflow.json
+  - name: ngr_wms_ransa_api-logging
+    type: org.cloudfoundry.existing-service
+ 
