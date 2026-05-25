@@ -507,6 +507,7 @@ this.on('UploadHoldDetail', async (req) => {
       p.hold_adddate = !p.hold_code ? '' : p.hold_adddate.replace(/[-T:.Z]/g, '').substring(0, 8);
       p.hold_addwho = !p.hold_addwho ? '' : p.hold_addwho;
       p.description2 = !p.description2 ? '' : p.description2;
+      p.description = !p.description ? '' : p.description;
 
       // 🔹 Construcción del nuevo JSON
       const transformedPayload = {
@@ -525,6 +526,7 @@ this.on('UploadHoldDetail', async (req) => {
         HoldAdddate:p.hold_adddate,
         HoldAddwho:p.hold_addwho,
         Description2:p.description2,
+        Description:p.description,
         Return: [{
           "Id": "",
           "Number": "",

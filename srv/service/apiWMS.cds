@@ -147,6 +147,7 @@ service ApiWMS @(path: '/api/wms') {
     hold_adddate  : String(50);
     hold_addwho   : String(256);
     description2  : String(256);
+    description   : String(256);
   }
 
   type UploadHoldDetailResult {
@@ -198,6 +199,7 @@ service ApiWMS @(path: '/api/wms') {
                           hold_qty: UploadHoldDetailHeaderPayload:hold_qty,
                           hold_adddate: UploadHoldDetailHeaderPayload:hold_adddate,
                           hold_addwho: UploadHoldDetailHeaderPayload:hold_addwho,
-                          description2: UploadHoldDetailHeaderPayload:description2
+                          description2: UploadHoldDetailHeaderPayload:description2,
+                          description: UploadHoldDetailHeaderPayload:description
                           )       returns UploadHoldDetailResult;
 }

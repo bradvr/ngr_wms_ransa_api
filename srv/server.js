@@ -141,7 +141,7 @@ cds.on('bootstrap', (app) => {
         const camposRaizPermitidos = ['sku','storerkey', 'whseid', 'lottable02', 
                                       'lottable05', 'lottable06', 'lottable07', 'lottable08', 
                                       'lottable09', 'pack_packuom3', 'hold_code', 'hold_qty', 
-                                      'hold_adddate','hold_addwho', 'description2'];
+                                      'hold_adddate','hold_addwho', 'description2', 'description'];
 
         // Campos permitidos dentro de cada objeto del array details
         /* const camposDetailsPermitidos = ['sku', 'fulfillqty', 'packuom3','lottable09','externlineno']; */ // <-- pon aquí tus campos
