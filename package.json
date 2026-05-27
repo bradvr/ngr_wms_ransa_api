@@ -20,10 +20,15 @@
   },
   "private": true,
   "cds": {
+      "server": {
+      "body_parser": {
+        "limit": "20mb"
+      }
+    },
     "features": {
       "odata_new_parser": false,
       "skip_unused": true,
-    "assert_integrity": false
+      "assert_integrity": false
     },
     "requires": {
       "[production]": {

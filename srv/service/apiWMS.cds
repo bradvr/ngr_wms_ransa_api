@@ -1,3 +1,4 @@
+@cds.server.body_parser.limit: '20mb'
 service ApiWMS @(path: '/api/wms') {
 
   /**
@@ -95,6 +96,7 @@ service ApiWMS @(path: '/api/wms') {
   type ExpeditionHeaderPayload {
     referencedocument : String(65);
     externorderkey    : String(32);
+    actualshipdate    : String(50);
     details           : array of ExpeditionDetailPayload;
   }
 
@@ -179,6 +181,7 @@ service ApiWMS @(path: '/api/wms') {
   //confirmacionSalidaDespacho
   action UploadOrdenExpedicion(referencedocument: ExpeditionHeaderPayload:referencedocument,
                                externorderkey: ExpeditionHeaderPayload:externorderkey,
+                               actualshipdate: ExpeditionHeaderPayload:actualshipdate,
                                details: ExpeditionHeaderPayload:details)        returns ExpeditionResult;
 
 

@@ -2,9 +2,16 @@ const cds = require('@sap/cds');
 const express = require('express');
 
 cds.on('bootstrap', (app) => {
-  app.use(express.json());
-
+  //app.use(express.json());
+  app.use(express.json({
+        limit: '20mb'
+  }));
+  app.use(express.urlencoded({
+        limit: '20mb',
+        extended: true
+    }));
   app.use((req, res, next) => {
+    req.setTimeout(300000) // 5 minutos
     if (
       req.path.includes('UploadASN') && 
       req.method === 'POST'
@@ -74,7 +81,7 @@ cds.on('bootstrap', (app) => {
     ) {
       if (req.body) {
         // Campos permitidos a nivel raíz
-        const camposRaizPermitidos = ['referencedocument','externorderkey', 'details'];
+        const camposRaizPermitidos = ['referencedocument','externorderkey', 'actualshipdate', 'details'];
 
         // Campos permitidos dentro de cada objeto del array details
         const camposDetailsPermitidos = ['sku', 'fulfillqty', 'packuom3','lottable09','externlineno','qty']; // <-- pon aquí tus campos

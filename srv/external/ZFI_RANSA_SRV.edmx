@@ -10,6 +10,7 @@
 					<PropertyRef Name="Externorderkey"/>
 				</Key>
 				<Property Name="Externorderkey" Type="Edm.String" Nullable="false" sap:label="EXTERNORDERKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Actualshipdate" Type="Edm.String" Nullable="false" sap:label="ACTUALSHIPDATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Referencedoc" Type="Edm.String" Nullable="false" sap:label="REFERENCEDOC" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<NavigationProperty Name="Detail" Relationship="ZFI_RANSA_SRV.ExpeditionHeaderToExpeditionDetail" FromRole="FromRole_ExpeditionHeaderToExpeditionDetail" ToRole="ToRole_ExpeditionHeaderToExpeditionDetail"/>
 				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.ExpeditionHeaderToReturn" FromRole="FromRole_ExpeditionHeaderToReturn" ToRole="ToRole_ExpeditionHeaderToReturn"/>
@@ -71,8 +72,8 @@
 				<Property Name="Susr1" Type="Edm.String" Nullable="false" sap:label="SUSR1" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Receiptkey" Type="Edm.String" Nullable="false" sap:label="RECEIPTKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Adddate" Type="Edm.String" sap:label="ADDDATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.AsnHeaderToReturn" FromRole="FromRole_AsnHeaderToReturn" ToRole="ToRole_AsnHeaderToReturn"/>
 				<NavigationProperty Name="Detail" Relationship="ZFI_RANSA_SRV.AsnHeaderToAsnDetail" FromRole="FromRole_AsnHeaderToAsnDetail" ToRole="ToRole_AsnHeaderToAsnDetail"/>
+				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.AsnHeaderToReturn" FromRole="FromRole_AsnHeaderToReturn" ToRole="ToRole_AsnHeaderToReturn"/>
 			</EntityType>
 			<EntityType Name="AsnDetail" sap:content-version="1">
 				<Key>
@@ -81,8 +82,8 @@
 				</Key>
 				<Property Name="Qtyexpected" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Importe ML" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Qtyreceived" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-				<Property Name="Receiptkey" Type="Edm.String" Nullable="false" sap:label="RECEIPTKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Expirydate" Type="Edm.String" Nullable="false" sap:label="EXPIRYDATE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Receiptkey" Type="Edm.String" Nullable="false" sap:label="RECEIPTKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
 				<Property Name="Tolot" Type="Edm.String" Nullable="false" sap:label="TOLOT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Sku" Type="Edm.String" Nullable="false" sap:label="SKU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -111,21 +112,21 @@
 				<Property Name="Sku" Type="Edm.String" Nullable="false" sap:label="SKU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Propietario" Type="Edm.String" Nullable="false" sap:label="PROPIETARIO" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Qty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
 				<Property Name="Storerkey" Type="Edm.String" Nullable="false" sap:label="STORERKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
 				<Property Name="Transactionid" Type="Edm.String" Nullable="false" sap:label="TRANSACTIONID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.AdjustHeaderToReturn" FromRole="FromRole_AdjustHeaderToReturn" ToRole="ToRole_AdjustHeaderToReturn"/>
 				<NavigationProperty Name="Detail" Relationship="ZFI_RANSA_SRV.AdjustHeaderToAdjustDetail" FromRole="FromRole_AdjustHeaderToAdjustDetail" ToRole="ToRole_AdjustHeaderToAdjustDetail"/>
+				<NavigationProperty Name="Return" Relationship="ZFI_RANSA_SRV.AdjustHeaderToReturn" FromRole="FromRole_AdjustHeaderToReturn" ToRole="ToRole_AdjustHeaderToReturn"/>
 			</EntityType>
 			<EntityType Name="AdjustDetail" sap:content-version="1">
 				<Key>
 					<PropertyRef Name="Adjustmentkey"/>
 					<PropertyRef Name="Sku"/>
 				</Key>
-				<Property Name="Qty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Adjustmentkey" Type="Edm.String" Nullable="false" sap:label="ADJUSTMENTKEY" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+				<Property Name="Qty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:label="Cantidad pedido" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 				<Property Name="Sku" Type="Edm.String" Nullable="false" sap:label="SKU" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+				<Property Name="Packuom3" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="UM base" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
 			</EntityType>
 			<Association Name="AdjustHeaderToReturn" sap:content-version="1">
 				<End Type="ZFI_RANSA_SRV.AdjustHeader" Multiplicity="1" Role="FromRole_AdjustHeaderToReturn"/>

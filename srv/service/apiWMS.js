@@ -267,6 +267,7 @@ module.exports = cds.service.impl(function () {
       //Quita los nulls
       p.referencedocument = !p.referencedocument ? '' : p.referencedocument;
       p.externorderkey = !p.externorderkey ? '' : p.externorderkey;
+      p.actualshipdate = !p.actualshipdate ? '' : p.actualshipdate.replace(/[-T:.Z]/g, '').substring(0, 8);
       p.details = p.details.map(item => {
         // 1. Reemplazar null por ''
         Object.keys(item).forEach(key => {
@@ -281,6 +282,7 @@ module.exports = cds.service.impl(function () {
       const transformedPayload = {
         Referencedoc: p.referencedocument,
         Externorderkey: p.externorderkey,
+        Actualshipdate: p.actualshipdate,
         Return: [{
           "Id": "",
           "Number": "",
