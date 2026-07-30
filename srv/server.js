@@ -12,6 +12,7 @@ cds.on('bootstrap', (app) => {
     }));
   app.use((req, res, next) => {
     req.setTimeout(300000) // 5 minutos
+    res.setTimeout(300000) // 5 minutos
     if (
       req.path.includes('UploadASN') && 
       req.method === 'POST'
@@ -124,18 +125,6 @@ cds.on('bootstrap', (app) => {
             delete req.body[key];
           }
         });
-
-        // 2. Limpiar campos dentro del array details
-        /* if (Array.isArray(req.body.details)) {
-          req.body.details = req.body.details.map(item => {
-            Object.keys(item).forEach(key => {
-              if (!camposDetailsPermitidos.includes(key)) {
-                delete item[key];
-              }
-            });
-            return item;
-          });
-        } */
       }
     }
 
@@ -159,18 +148,6 @@ cds.on('bootstrap', (app) => {
             delete req.body[key];
           }
         });
-
-        // 2. Limpiar campos dentro del array details
-        /* if (Array.isArray(req.body.details)) {
-          req.body.details = req.body.details.map(item => {
-            Object.keys(item).forEach(key => {
-              if (!camposDetailsPermitidos.includes(key)) {
-                delete item[key];
-              }
-            });
-            return item;
-          });
-        } */
       }
     }
     next();

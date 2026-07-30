@@ -45,7 +45,8 @@
         "[production]": {
           "credentials": {
             "destination": "s4h_backend_system",
-            "path": "/sap/opu/odata/sap/ZFI_RANSA_SRV"
+            "path": "/sap/opu/odata/sap/ZFI_RANSA_SRV",
+            "requestTimeout": 150000 
           }
         },
         "[development]": {
@@ -54,7 +55,8 @@
             "path": "/sap/opu/odata/sap/ZFI_RANSA_SRV",
             "authentication": "BasicAuthentication",
             "username": "lrosales",
-            "password": "Inicio$113"
+            "password": "Inicio$113",
+            "requestTimeout": 150000 
           }
         }
       },

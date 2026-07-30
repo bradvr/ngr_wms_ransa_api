@@ -169,26 +169,26 @@ service ApiWMS @(path: '/api/wms') {
                    details: ASNHeaderPayload:details)                           returns UploadResult;
 
   //confirmacionSalidaAdjunto
-  action UploadAdjustment(adjustmentkey: AdjustHeaderPayload:adjustmentkey,
+/*   action UploadAdjustment(adjustmentkey: AdjustHeaderPayload:adjustmentkey,
                           propietario: AdjustHeaderPayload:propietario,
                           storerkey: AdjustHeaderPayload:storerkey,
                           transactionid: AdjustHeaderPayload:transactionid,
                           sku: AdjustDetailPayload:sku,
                           qty: AdjustDetailPayload:qty,
                           packuom3: AdjustDetailPayload:packuom3,
-                          lottable09: AdjustHeaderPayload:lottable09)           returns AdjustResult;
+                          lottable09: AdjustHeaderPayload:lottable09)           returns AdjustResult; */
 
   //confirmacionSalidaDespacho
-  action UploadOrdenExpedicion(referencedocument: ExpeditionHeaderPayload:referencedocument,
+    action UploadOrdenExpedicion(referencedocument: ExpeditionHeaderPayload:referencedocument,
                                externorderkey: ExpeditionHeaderPayload:externorderkey,
                                actualshipdate: ExpeditionHeaderPayload:actualshipdate,
-                               details: ExpeditionHeaderPayload:details)        returns ExpeditionResult;
+                               details: ExpeditionHeaderPayload:details)        returns ExpeditionResult;  
 
 
   action UploadConfirmacionGuia(guia: ConfirmacionGuiaHeaderPayload:guia,
                                 pedidos: ConfirmacionGuiaHeaderPayload:pedidos) returns ConfirmacionGuiaResult;
 
-  action UploadHoldDetail(sku: UploadHoldDetailHeaderPayload:sku,
+/*   action UploadHoldDetail(sku: UploadHoldDetailHeaderPayload:sku,
                           storerkey: UploadHoldDetailHeaderPayload:storerkey,
                           whseid: UploadHoldDetailHeaderPayload:whseid,
                           lottable02: UploadHoldDetailHeaderPayload:lottable02,
@@ -205,4 +205,7 @@ service ApiWMS @(path: '/api/wms') {
                           description2: UploadHoldDetailHeaderPayload:description2,
                           description: UploadHoldDetailHeaderPayload:description
                           )       returns UploadHoldDetailResult;
+
+ */
+
 }
