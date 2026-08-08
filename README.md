@@ -28,3 +28,13 @@ Learn more at https://cap.cloud.sap/docs/get-started/.
 ##
 
 cds compile srv --service all -o docs --to openapi
+
+curl http://localhost:8887/reload
+
+create 
+
+.env 
+
+upload
+
+destinations=[{"name":"<name-of-destination>","proxyHost":"http://127.0.0.1","proxyPort":"8887","url":"http://<name-of-destination>.dest"}]
