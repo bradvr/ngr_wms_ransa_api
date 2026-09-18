@@ -42,6 +42,7 @@ module.exports = cds.service.impl(function () {
         //Adddate: p.adddate.replace(/-/g, ""),
         Adddate: !p.adddate ? '' : p.adddate.replace(/[-T:.Z]/g, '').substring(0, 8),
         Susr1: !p.susr1 ? '' : p.susr1,
+        Verifiedcloseddate: !p.verifiedcloseddate ? '' : p.verifiedcloseddate,
         Return: [{
           "Id": "",
           "Number": "",

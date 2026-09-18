@@ -24,6 +24,7 @@ service ApiWMS @(path: '/api/wms') {
     receiptkey : String(30);
     adddate    : String(50); //Timestamp;
     susr1      : String(100); //Timestamp;
+    verifiedcloseddate      : String(200); //Timestamp;
     details    : array of ASNDetailPayload;
   }
 
@@ -166,6 +167,7 @@ service ApiWMS @(path: '/api/wms') {
   action UploadASN(receiptkey: ASNHeaderPayload:receiptkey,
                    adddate: ASNHeaderPayload:adddate,
                    susr1: ASNHeaderPayload:susr1,
+                   verifiedcloseddate: ASNHeaderPayload:verifiedcloseddate,
                    details: ASNHeaderPayload:details)                           returns UploadResult;
 
   //confirmacionSalidaAdjunto
@@ -188,24 +190,24 @@ service ApiWMS @(path: '/api/wms') {
   action UploadConfirmacionGuia(guia: ConfirmacionGuiaHeaderPayload:guia,
                                 pedidos: ConfirmacionGuiaHeaderPayload:pedidos) returns ConfirmacionGuiaResult;
 
-/*   action UploadHoldDetail(sku: UploadHoldDetailHeaderPayload:sku,
-                          storerkey: UploadHoldDetailHeaderPayload:storerkey,
-                          whseid: UploadHoldDetailHeaderPayload:whseid,
-                          lottable02: UploadHoldDetailHeaderPayload:lottable02,
-                          lottable05: UploadHoldDetailHeaderPayload:lottable05,
-                          lottable06: UploadHoldDetailHeaderPayload:lottable06,
-                          lottable07: UploadHoldDetailHeaderPayload:lottable07,
-                          lottable08: UploadHoldDetailHeaderPayload:lottable08,
-                          lottable09: UploadHoldDetailHeaderPayload:lottable09,
-                          pack_packuom3: UploadHoldDetailHeaderPayload:pack_packuom3,
-                          hold_code: UploadHoldDetailHeaderPayload:hold_code,
-                          hold_qty: UploadHoldDetailHeaderPayload:hold_qty,
-                          hold_adddate: UploadHoldDetailHeaderPayload:hold_adddate,
-                          hold_addwho: UploadHoldDetailHeaderPayload:hold_addwho,
-                          description2: UploadHoldDetailHeaderPayload:description2,
-                          description: UploadHoldDetailHeaderPayload:description
-                          )       returns UploadHoldDetailResult;
+  action UploadHoldDetail(sku: UploadHoldDetailHeaderPayload:sku,
+                      storerkey: UploadHoldDetailHeaderPayload:storerkey,
+                      whseid: UploadHoldDetailHeaderPayload:whseid,
+                      lottable02: UploadHoldDetailHeaderPayload:lottable02,
+                      lottable05: UploadHoldDetailHeaderPayload:lottable05,
+                      lottable06: UploadHoldDetailHeaderPayload:lottable06,
+                      lottable07: UploadHoldDetailHeaderPayload:lottable07,
+                      lottable08: UploadHoldDetailHeaderPayload:lottable08,
+                      lottable09: UploadHoldDetailHeaderPayload:lottable09,
+                      pack_packuom3: UploadHoldDetailHeaderPayload:pack_packuom3,
+                      hold_code: UploadHoldDetailHeaderPayload:hold_code,
+                      hold_qty: UploadHoldDetailHeaderPayload:hold_qty,
+                      hold_adddate: UploadHoldDetailHeaderPayload:hold_adddate,
+                      hold_addwho: UploadHoldDetailHeaderPayload:hold_addwho,
+                      description2: UploadHoldDetailHeaderPayload:description2,
+                      description: UploadHoldDetailHeaderPayload:description
+                      )       returns UploadHoldDetailResult;
 
- */
+
 
 }

@@ -19,7 +19,7 @@ cds.on('bootstrap', (app) => {
     ) {
       if (req.body) {
         // Campos permitidos a nivel raíz
-        const camposRaizPermitidos = ['receiptkey', 'adddate','susr1','details'];
+        const camposRaizPermitidos = ['receiptkey', 'adddate','susr1','verifiedcloseddate','details'];
 
         // Campos permitidos dentro de cada objeto del array details
         const camposDetailsPermitidos = ['sku', 'storerkey', 'qtyexpected','packuom3','purchaseorderdocument','purchaseorderline','codigo_almacen','qtyreceived','tolot','fecha_de_vencimiento','lottable09']; // <-- pon aquí tus campos
